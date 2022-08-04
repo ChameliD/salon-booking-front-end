@@ -16,7 +16,11 @@ export const getBookings=async()=>{
 export const addBooking=async(formData:IBooking)=>{
     try{
         const booking:Omit<IBooking,'_id'>={
+            service:formData.service,           
             firstName: formData.firstName,
+            lastName:formData.lastName,
+            bookingDate:formData.bookingTime,
+            bookingTime:formData.bookingDate,
             //description:formData.description,
             //status:'false'
         }
