@@ -1,5 +1,6 @@
 import axios,{AxiosResponse} from "axios"
-
+import TextField from '@mui/material/TextField';
+import Stack from '@mui/material/Stack';
 const baseUrl:string="http://localhost:3001/api"
 
 export const getBookings=async()=>{
@@ -19,8 +20,8 @@ export const addBooking=async(formData:IBooking)=>{
             service:formData.service,           
             firstName: formData.firstName,
             lastName:formData.lastName,
-            bookingDate:formData.bookingTime,
-            bookingTime:formData.bookingDate,
+            bookingDate:formData.bookingDate,
+            bookingTime:formData.bookingTime,
             //description:formData.description,
             //status:'false'
         }

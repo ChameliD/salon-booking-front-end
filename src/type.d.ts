@@ -3,9 +3,8 @@ interface IBooking{
     service:string
     firstName:string
     lastName:string
-    bookingDate:string
+    bookingDate:Date
     bookingTime:string
-    
 
 }
 
