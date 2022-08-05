@@ -1,6 +1,6 @@
 import React from 'react'
 
-function PaymentComponents() {
+const PaymentComponents:React.FC=({})=>{
   return (
     <div>PaymentComponents</div>
   )
