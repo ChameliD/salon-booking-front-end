@@ -1,48 +1,50 @@
 import React, { useState } from 'react'
-import { Button, MenuItem, Stack, TextField } from "@mui/material"
-import Service from "../../Data/Services"
-//import DatePicker from "react-datepicker"
-//import { DatePicker } from '@material-ui/pickers'
-import {DatePicker, LocalizationProvider} from '@mui/x-date-pickers'
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+import { Stack, TextField } from "@mui/material"
 import { useNavigate } from 'react-router-dom'
 type Props={
     saveBooking:(e: React.FormEvent,formData:IBooking|any)=>void
     }
 
 const BookingComponent:React.FC<Props>=({saveBooking})=>{
+    
     const navigate = useNavigate()
     const[formData,setFormData]=useState<IBooking|{}>()
     const[service,setService]=useState("")
+   
     
-    const handleChangedate = (event:any) => {
-
-        setService(event.target.value);
-        console.log(event.target.value);
+    const handleServise=(e:any)=>{
+        setService (e.target.value)
+        console.log(setService)
+        
+    }
     
-      };
     const handleForm=(e:any)=>{
+        
         setFormData({
             ...formData,
             [e.currentTarget.id]:e.currentTarget.value,
+            
         })
+        //getFormData()
     }
     const redirectPayment=()=>{
-        console.log("...redirectiong")
-        navigate('/');
+       
+       console.log("success")
         
+
     }
     return(
-        <form className='Form' onSubmit={(e)=>saveBooking(e,formData)}>
+        <div>
+        <form className='Form' onSubmit={(e)=>{saveBooking(e,formData); handleServise(e)}}>
             <div>
 
                 <div>
                     <label htmlFor="service">Service</label>
-                    <select id="service" onChange={handleForm}>
-                        <option id="1" value="230">service 1</option>
-                        <option id="2" value="250">service 2</option>
-                        <option id="3" value="65">service 3</option>
-                        <option id="4" value="45">service 4</option>
+                    <select id="service" onChange={(e)=>{handleServise(e);handleForm(e)}}>
+                        <option value="100">service 1</option>
+                        <option value="250">service 2</option>
+                        <option value="65">service 3</option>
+                        <option value="45">service 4</option>
                     </select> 
                 </div>
 
@@ -54,6 +56,10 @@ const BookingComponent:React.FC<Props>=({saveBooking})=>{
                 <div>
                     <label htmlFor='lastName'>Last Name</label>
                     <input onChange={handleForm} type='text' id="lastName"/> 
+                </div>
+                <div>
+                    <label htmlFor='email'>E-mail</label>
+                    <input onChange={handleForm} type='text' id="email"/> 
                 </div>
 
                 <div>
@@ -98,8 +104,10 @@ const BookingComponent:React.FC<Props>=({saveBooking})=>{
    
             </div>
             <button disabled={formData===undefined?true: false}>Create Booking</button>
-           <a href='/payment'>Go to payment</a>
+           
         </form>
+        <p>Your totat payment is {service}</p>
+        </div>
     )
 }
 

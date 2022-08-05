@@ -20,10 +20,10 @@ export const addBooking=async(formData:IBooking)=>{
             service:formData.service,           
             firstName: formData.firstName,
             lastName:formData.lastName,
+            email:formData.email,
             bookingDate:formData.bookingDate,
             bookingTime:formData.bookingTime,
-            //description:formData.description,
-            //status:'false'
+            
         }
         const saveBooking=await axios.post(
             baseUrl+'/booking',booking
@@ -34,4 +34,5 @@ export const addBooking=async(formData:IBooking)=>{
         console.log(error)
 
     }
+
 }

@@ -20,6 +20,7 @@ const Booking:React.FC=()=>{
         addBooking(formData)
         .then(()=>{
             fetchBookings()
+           // console.log(formData.firstName)
         })
         .catch((err)=>console.log(err))
     }
@@ -27,6 +28,7 @@ const Booking:React.FC=()=>{
         <main className="Booking">
             <h1>Create a Booking</h1>
             <AddBooking saveBooking={handleSaveBookings}/>
+            
             
              </main>
     )
