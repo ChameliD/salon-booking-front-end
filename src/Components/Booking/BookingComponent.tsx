@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
 import { Stack, TextField } from "@mui/material"
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import StripeCheckout from 'react-stripe-checkout'
+
+const baseUrl:string="http://localhost:3001/api"
+
+
 type Props={
     saveBooking:(e: React.FormEvent,formData:IBooking|any)=>void
     }
@@ -10,12 +16,21 @@ const BookingComponent:React.FC<Props>=({saveBooking})=>{
     const navigate = useNavigate()
     const[formData,setFormData]=useState<IBooking|{}>()
     const[service,setService]=useState("")
+    const[email,setEmail]=useState("")
+    const MY_KEY="sk_test_51LTlTVSJfUhhEYU95noKzbt2wRJ2bff87B1OSjY5ViSScF9F0K0dvQ5pPYNZW4hDAX6UJXOmzkRoCtti1tJBWKsC00Qy6xmjx3"
    
+    const handleToken=async(token,formData)=>{
+       const response=await axios.post(baseUrl+'/create-checkout-session',{token,formData})
+    }
     
     const handleServise=(e:any)=>{
         setService (e.target.value)
         console.log(setService)
         
+    }
+
+    const handleEmail=(e:any)=>{
+        setEmail(e.target.value)
     }
     
     const handleForm=(e:any)=>{
@@ -27,15 +42,26 @@ const BookingComponent:React.FC<Props>=({saveBooking})=>{
         })
         //getFormData()
     }
-    const redirectPayment=()=>{
-       
-       console.log("success")
-        
+      const handlePay=(e1:any,e2:any)=>{
+        console.log("paymnt checking",e1)
+        axios.post(baseUrl+'/stripe/create-checkout-session',{
+            e1,
+            e2  
+            //console.log(e1,e2)       
+        })
+        .then((res)=>{
+            if(res.data.baseUrl){
+                window.location.href=res.data.baseUrl;
+            }
+        })
+        .catch((error)=>console.log("error",error))
 
+        
     }
+
     return(
         <div>
-        <form className='Form' onSubmit={(e)=>{saveBooking(e,formData); handleServise(e)}}>
+        <form className='Form' onSubmit={(e)=>{saveBooking(e,formData);handlePay(email,service)}}>
             <div>
 
                 <div>
@@ -59,7 +85,8 @@ const BookingComponent:React.FC<Props>=({saveBooking})=>{
                 </div>
                 <div>
                     <label htmlFor='email'>E-mail</label>
-                    <input onChange={handleForm} type='text' id="email"/> 
+                    <input onChange={(e)=>{handleEmail(e);handleForm(e)}} type='text' id="email"/>
+                    <p></p> 
                 </div>
 
                 <div>
@@ -107,6 +134,17 @@ const BookingComponent:React.FC<Props>=({saveBooking})=>{
            
         </form>
         <p>Your totat payment is {service}</p>
+
+        <div>
+        <div> 
+            <StripeCheckout 
+                stripeKey = {MY_KEY}
+                token={()=>handleToken(service,email)}
+                email={email}
+                amount={Number({service})}
+                
+    /></div>
+        </div>
         </div>
     )
 }

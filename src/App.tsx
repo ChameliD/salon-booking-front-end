@@ -5,6 +5,8 @@ import Booking from './Booking'
 import HeaderComponents from './Components/Header/HeaderComponents'
 //import Booking from './Booking'
 import HomeComponents from './Components/Home/HomeComponents'
+import PaymentNotSuccess from './Components/PaymentNotSuccess'
+import PaymentSucess from './Components/PaymentSucess'
 
 
 
@@ -17,6 +19,8 @@ const App:React.FC<IAppProps>=()=>{
     <Routes>
       <Route path='/' element ={<HomeComponents/>}/>
       <Route path='/booking' element={<Booking/>}/>
+      <Route path='/checkout-success' element={<PaymentSucess/>}/>
+      <Route path='/checkout-cancel' element={<PaymentNotSuccess/>}/>
       
       
 
