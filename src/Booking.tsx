@@ -2,6 +2,7 @@ import React,{ useEffect, useState } from "react"
 import { addBooking, getBookings } from "./API"
 import AddBooking from "./Components/Booking/BookingComponent"
 import TestBooking from "./Components/TestBooking/TestBookingComponent"
+//import "index.css"
 
 const Booking:React.FC=()=>{
     const[bookings,setBookingns]=useState<IBooking[]>([])
@@ -26,7 +27,7 @@ const Booking:React.FC=()=>{
     }
     return(
         <main className="Booking">
-            <h1>Create a Booking</h1>
+            <h1 className='main-booking'>Booking Details</h1>
             <TestBooking saveBooking={handleSaveBookings}/>
             
             

@@ -1,3 +1,11 @@
-.form-container{
-    margin: 10pt;
+.form-container-1{
+   padding: auto;
+   padding :60pt;
+margin-right: 10pt;
 }
+
+.form-container-2{
+    margin-left: 60%;
+    padding: auto;
+}
+

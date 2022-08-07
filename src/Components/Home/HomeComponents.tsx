@@ -1,11 +1,10 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import HeaderComponents from '../Header/HeaderComponents'
-import HomeAbout from './HomeAbout'
 import './HomeComponents.css'
-import haircut from '/Haircut.png'
+import haircut from './Haircut.png'
 import Makeup from './Makeup.png'
 import hairStyling from './HairStyling.png'
+
 export default function HomeComponents() {
   const nevigate=useNavigate()
   const redirectBooking=()=>{

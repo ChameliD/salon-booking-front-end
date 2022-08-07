@@ -7,6 +7,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import './TestBookingComponent.css'
+import haircut from './Haircut.png'
 
 
 const baseUrl:string="http://localhost:3001/api"
@@ -80,33 +81,34 @@ const TestBookingComponent:React.FC<Props>=({saveBooking})=>{
         <div>
             <div><ul className="list-group list-group-horizontal-xl borderless">
             <li className="list-group-item border-0">
-          <div className='form-container'>
+          <div className='form-container-1'>
         <form className='Form' onSubmit={(e)=>{saveBooking(e,formData);handlePay(email,service)}}>
             <div>
 
                 <div>
-                    <label htmlFor="service">Service</label>
-                    <select id="service" onChange={(e)=>{handleServise(e);handleForm(e)}} >
+                   <div> <label htmlFor="service">Service</label></div>
+                   <div> <select id="service" onChange={(e)=>{handleServise(e);handleForm(e)}} >Service
+                        <option value="100"></option>
                         <option value="100">Hair cut</option>
                         <option value="250">Hair Style</option>
                         <option value="65">Makeup</option>
                         
-                    </select> 
+                    </select> </div>
                 </div>
 
                 <div>
-                    <label htmlFor='firstName'>First Name</label>
-                    <input onChange={handleForm} type='text' id="firstName" required/> 
+                    <div><label htmlFor='firstName'>First Name</label></div>
+                    <div><input onChange={handleForm} type='text' id="firstName" required/> </div>
                 </div>
 
                 <div>
-                    <label htmlFor='lastName'>Last Name</label>
-                    <input onChange={handleForm} type='text' id="lastName" required/> 
+                <div> <label htmlFor='lastName'>Last Name</label></div>
+                <div> <input onChange={handleForm} type='text' id="lastName" required/> </div>
                 </div>
                 <div>
-                    <label htmlFor='email'>E-mail</label>
-                    <input onChange={(e)=>{handleEmail(e);handleForm(e)}} type='email' id="email" required/>
-                    <p></p> 
+                <div><label htmlFor='email'>E-mail</label></div>
+                <div> <input onChange={(e)=>{handleEmail(e);handleForm(e)}} type='email' id="email" required/></div>
+                 
                 </div>
 
                 <div>
@@ -132,17 +134,17 @@ const TestBookingComponent:React.FC<Props>=({saveBooking})=>{
                
                 <label htmlFor='bookingTime'>Booking Time</label>
                
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                  
+                <LocalizationProvider dateAdapter={AdapterDateFns} onChange={handleForm} id='bookingTime'>
+                
                     <TimePicker
-                      renderInput={(params) => <TextField {...params} id='bookingTime' onChange={handleForm}/>}
+                      renderInput={(params) => <TextField {...params} />}
                       value={value}
                       
                       onChange={(newValue) => {setValue(newValue)}}
                       minTime={new Date(0, 0, 0,8)}
                       maxTime={new Date(0, 0, 0, 18, 0)}
                     />
-                    
+                   
                  
                 </LocalizationProvider>
                
@@ -151,10 +153,11 @@ const TestBookingComponent:React.FC<Props>=({saveBooking})=>{
                 
    
             </div>
-            <button disabled={formData===undefined?true: false}>Create Booking</button>
+            <div><br/>
+            <button disabled={formData===undefined?true: false}>Create Booking</button></div>
            
         </form>
-        <p>Your totat payment is {service}</p>
+        <p>Your totat payment is {service}$</p>
 
         <div>
         <div> 
@@ -170,13 +173,11 @@ const TestBookingComponent:React.FC<Props>=({saveBooking})=>{
         </div>
         </li>
       
-        <li className="list-group-item border-0"> 
-          <div className='form-container'>
-            
-            <p className='main-about'>Makeup</p>
-            <p className='body-about'>Lorem ipsum dolor sit amet, conse adipiscing elit, sed do eiusmod tempor incididunt ut.</p>
+        <li className="list-group-item border-0">
+          <div className='form-container-2'>
+           <img  src={haircut} alt=''/>
           </div>
-        </li>      
+        </li>     
       </ul></div>
         </div>
     )
