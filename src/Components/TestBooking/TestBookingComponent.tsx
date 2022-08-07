@@ -6,6 +6,7 @@ import StripeCheckout from 'react-stripe-checkout'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import './TestBookingComponent.css'
 
 
 const baseUrl:string="http://localhost:3001/api"
@@ -77,16 +78,19 @@ const TestBookingComponent:React.FC<Props>=({saveBooking})=>{
     
     return(
         <div>
+            <div><ul className="list-group list-group-horizontal-xl borderless">
+            <li className="list-group-item border-0">
+          <div className='form-container'>
         <form className='Form' onSubmit={(e)=>{saveBooking(e,formData);handlePay(email,service)}}>
             <div>
 
                 <div>
                     <label htmlFor="service">Service</label>
                     <select id="service" onChange={(e)=>{handleServise(e);handleForm(e)}} >
-                        <option value="100">service 1</option>
-                        <option value="250">service 2</option>
-                        <option value="65">service 3</option>
-                        <option value="45">service 4</option>
+                        <option value="100">Hair cut</option>
+                        <option value="250">Hair Style</option>
+                        <option value="65">Makeup</option>
+                        
                     </select> 
                 </div>
 
@@ -163,6 +167,17 @@ const TestBookingComponent:React.FC<Props>=({saveBooking})=>{
     /></div>
     
         </div>
+        </div>
+        </li>
+      
+        <li className="list-group-item border-0"> 
+          <div className='form-container'>
+            
+            <p className='main-about'>Makeup</p>
+            <p className='body-about'>Lorem ipsum dolor sit amet, conse adipiscing elit, sed do eiusmod tempor incididunt ut.</p>
+          </div>
+        </li>      
+      </ul></div>
         </div>
     )
 }
