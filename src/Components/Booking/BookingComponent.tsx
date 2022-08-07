@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import StripeCheckout from 'react-stripe-checkout'
 
+
+
 const baseUrl:string="http://localhost:3001/api"
 
 
@@ -17,6 +19,9 @@ const BookingComponent:React.FC<Props>=({saveBooking})=>{
     const[formData,setFormData]=useState<IBooking|{}>()
     const[service,setService]=useState("")
     const[email,setEmail]=useState("")
+    const[bookingDate,setBookingDate]=useState("")
+    const[bookingTime,setBookingTime]=useState("")
+
     const MY_KEY="sk_test_51LTlTVSJfUhhEYU95noKzbt2wRJ2bff87B1OSjY5ViSScF9F0K0dvQ5pPYNZW4hDAX6UJXOmzkRoCtti1tJBWKsC00Qy6xmjx3"
    
     const handleToken=async(token,formData)=>{
@@ -25,14 +30,19 @@ const BookingComponent:React.FC<Props>=({saveBooking})=>{
     
     const handleServise=(e:any)=>{
         setService (e.target.value)
-        console.log(setService)
-        
+                
+    }
+
+   
+    const handleDate=(e:any)=>{
+        setService (e.target.value)
+                
     }
 
     const handleEmail=(e:any)=>{
         setEmail(e.target.value)
     }
-    
+
     const handleForm=(e:any)=>{
         
         setFormData({
@@ -66,7 +76,7 @@ const BookingComponent:React.FC<Props>=({saveBooking})=>{
 
                 <div>
                     <label htmlFor="service">Service</label>
-                    <select id="service" onChange={(e)=>{handleServise(e);handleForm(e)}}>
+                    <select id="service" onChange={(e)=>{handleServise(e);handleForm(e)}} >
                         <option value="100">service 1</option>
                         <option value="250">service 2</option>
                         <option value="65">service 3</option>
@@ -76,16 +86,16 @@ const BookingComponent:React.FC<Props>=({saveBooking})=>{
 
                 <div>
                     <label htmlFor='firstName'>First Name</label>
-                    <input onChange={handleForm} type='text' id="firstName"/> 
+                    <input onChange={handleForm} type='text' id="firstName" required/> 
                 </div>
 
                 <div>
                     <label htmlFor='lastName'>Last Name</label>
-                    <input onChange={handleForm} type='text' id="lastName"/> 
+                    <input onChange={handleForm} type='text' id="lastName" required/> 
                 </div>
                 <div>
                     <label htmlFor='email'>E-mail</label>
-                    <input onChange={(e)=>{handleEmail(e);handleForm(e)}} type='text' id="email"/>
+                    <input onChange={(e)=>{handleEmail(e);handleForm(e)}} type='email' id="email" required/>
                     <p></p> 
                 </div>
 
@@ -98,10 +108,11 @@ const BookingComponent:React.FC<Props>=({saveBooking})=>{
                 <Stack component="form" noValidate spacing={3}>
                     
                 <TextField
+                    required
                     id="bookingDate"
                     label=""
                     type="date"
-                    defaultValue="2022-05-24"
+                    defaultValue=""
                     onChange={handleForm}
                     sx={{ width: 220 }}
                     InputLabelProps={{
@@ -111,10 +122,11 @@ const BookingComponent:React.FC<Props>=({saveBooking})=>{
                
                 <label htmlFor='bookingTime'>Booking Time</label>
                 <TextField
+                    required
                     id="bookingTime"
                     label=""
                     type="time"
-                    defaultValue="07:30" //opening hour
+                    defaultValue="" //opening hour
                     onChange={handleForm}
                     InputLabelProps={{
                     shrink: true,
@@ -123,6 +135,7 @@ const BookingComponent:React.FC<Props>=({saveBooking})=>{
                     step: 300, // 5 min
                     }}
                     sx={{ width: 150 }}
+                   
                 />
                
                 </Stack>

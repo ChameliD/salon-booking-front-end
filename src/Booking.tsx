@@ -27,7 +27,7 @@ const Booking:React.FC=()=>{
     return(
         <main className="Booking">
             <h1>Create a Booking</h1>
-            <AddBooking saveBooking={handleSaveBookings}/>
+            <TestBooking saveBooking={handleSaveBookings}/>
             
             
              </main>

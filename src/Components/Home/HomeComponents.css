@@ -1,0 +1,79 @@
+
+.main-container{
+   
+    padding: 1rem;
+    background-image: url('./about.png');
+    background-size:cover;
+    background-repeat: no-repeat;
+    align-items: center;
+}
+.main{
+    padding-top: 40pt;
+    margin-top: 100pt;
+    margin: 30pt;
+    color:white;
+    font-size: 50px;
+    line-height: 49.5px;
+    font-family: 'Playfair Display', serif;;
+}
+.body{
+    padding-bottom: 20pt;
+    margin: 30pt;
+    color:white;
+    font-size: 14px;
+    line-height: 21px;
+    font-family: 'Poppins', sans-serif;
+    
+}
+.main-secondery{
+    padding-top: 40pt;
+    margin-top: 100pt;
+    margin: 30pt;
+    color:black;
+    font-size: 50px;
+    line-height: 49.5px;
+    font-family: 'Playfair Display', serif;;
+}
+.secondary-container{
+    padding: 1rem;
+   
+    
+}
+
+.small-container{
+    margin: 10pt;
+    background-color: #FAFAFA;
+}
+
+.main-about{
+    
+    margin-top: 100pt;
+    margin: 30pt;
+    color:black;
+    font-size: 20px;
+    line-height: 19.8px;
+    font-family: 'Playfair Display', serif;
+
+}
+.body-about{
+    padding-bottom: 20pt;
+    margin: 30pt;
+    color:black;
+    font-size: 14px;
+    line-height: 21px;
+    font-family: 'Poppins', sans-serif;
+    
+}
+.button{
+    margin: 40pt;
+}
+
+.us-container{
+   
+    padding: 1rem;
+    background-image: url('./haircut.png');
+    background-size:cover;
+    background-repeat: no-repeat;
+    align-items: center;
+    mix-blend-mode: soft-light;
+}

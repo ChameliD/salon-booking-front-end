@@ -14,7 +14,8 @@ export interface IAppProps {}
 const App:React.FC<IAppProps>=()=>{
   return (
     <div>
-   <HeaderComponents/>
+   <div><HeaderComponents/></div>
+   <div>
     <BrowserRouter>
     <Routes>
       <Route path='/' element ={<HomeComponents/>}/>
@@ -22,11 +23,9 @@ const App:React.FC<IAppProps>=()=>{
       <Route path='/checkout-success' element={<PaymentSucess/>}/>
       <Route path='/checkout-cancel' element={<PaymentNotSuccess/>}/>
       
-      
-
-      
     </Routes>
-    </BrowserRouter>   
+    </BrowserRouter> 
+    </div>  
     </div>
     )
 }

@@ -3,6 +3,8 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 const baseUrl:string="http://localhost:3001/api"
 
+//at that time no need to use get method
+
 export const getBookings=async()=>{
     try{
         const bookings= await axios.get(
