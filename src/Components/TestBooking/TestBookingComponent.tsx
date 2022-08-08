@@ -19,7 +19,7 @@ type Props={
 
 const TestBookingComponent:React.FC<Props>=({saveBooking})=>{
     
-    const navigate = useNavigate()
+    
     const[formData,setFormData]=useState<IBooking|{}>()
     const[service,setService]=useState("")
     const[email,setEmail]=useState("")

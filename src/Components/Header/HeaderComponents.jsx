@@ -5,12 +5,7 @@ import logo from './logo_full.png'; // Tell webpack this JS file uses this image
 
 
 const HeaderComponents=()=> {
-  /*const navigate = useNavigate();
-
-  const nevigateBooking=()=>{
-    navigate("/booking");
-  }*/
-  
+ 
   
     return (
       <header>
