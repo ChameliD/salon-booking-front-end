@@ -1,6 +1,5 @@
 import React,{ useEffect, useState } from "react"
 import { addBooking, getBookings } from "./API"
-import AddBooking from "./Components/Booking/BookingComponent"
 import TestBooking from "./Components/TestBooking/TestBookingComponent"
 //import "index.css"
 
